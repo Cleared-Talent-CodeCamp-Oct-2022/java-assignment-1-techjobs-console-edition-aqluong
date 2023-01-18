@@ -72,7 +72,7 @@ public class JobData {
 
         // load data, if not already loaded
         loadData();
-
+// We create this empty jobs list so that we can fill it up with any jobs that match our search
         ArrayList<HashMap<String, String>> jobs = new ArrayList<>();
 
         for (HashMap<String, String> row : allJobs) {
