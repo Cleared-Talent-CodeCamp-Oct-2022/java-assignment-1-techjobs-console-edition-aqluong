@@ -62,10 +62,12 @@ public class TechJobs {
                 String searchTerm = in.nextLine();
 
                 if (searchField.equals("all")) {
+                    // This is on line 97 in JobData.java and around 23:00 in the Part 2 video
                     printJobs(JobData.findByValue(searchTerm));
                 } else {
                     printJobs(JobData.findByColumnAndValue(searchField, searchTerm));
-                    // this is where part 2 of the Assignment takes place but in JobData
+                    // this is where part 2 of the Assignment takes place but in JobData.java line 71
+                    // https://www.youtube.com/watch?v=YEa3TaqYO0U&list=PLSNijfo6mLReVIWdj2iA5hc4AvryGtT8x&index=3 @ 9.00min
                 }
             }
         }
@@ -129,18 +131,19 @@ public class TechJobs {
             // 3.4.1.2 for-each declare the iterator variable "someJob
             for (HashMap<String, String> someJob : someJobs) {
                 // Needed this out to look like the example
-                System.out.println("*****");
+                System.out.println("\n*****");
                 // Reference to https://education.launchcode.org/java-web-development/chapters/control-flow-and-collections/hashmap.html line 38-41
                 for (Map.Entry<String, String> data : someJob.entrySet()) {
                     System.out.println(data.getKey() + ": " + data.getValue());
                 }
-                System.out.println("*****\n");
+                System.out.println("*****");
                 // needed the new line to look like the example but on the next line
             }
-        }
-     else System.out.println("No Results");
+        } else {
+            System.out.println("No Results");
         }
 
 //        System.out.println("printJobs is not implemented yet");
     }
+}
 
