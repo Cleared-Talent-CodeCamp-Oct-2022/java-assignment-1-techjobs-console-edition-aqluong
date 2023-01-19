@@ -73,6 +73,7 @@ public class JobData {
         // Talks about this around 16:00 in the Assignment 1 Intro Part 2 video
         ArrayList<HashMap<String, String>> jobs = new ArrayList<>();
 // think of row as job
+        // to make things case insensitive any row/column/value toLowerCase()
         for (HashMap<String, String> row : allJobs) {
 
             String aValue = row.get(column).toLowerCase();
