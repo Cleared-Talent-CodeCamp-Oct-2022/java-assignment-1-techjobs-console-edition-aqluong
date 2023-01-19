@@ -65,6 +65,7 @@ public class TechJobs {
                     printJobs(JobData.findByValue(searchTerm));
                 } else {
                     printJobs(JobData.findByColumnAndValue(searchField, searchTerm));
+                    // this is where part 2 of the Assignment takes place but in JobData
                 }
             }
         }
@@ -118,18 +119,23 @@ public class TechJobs {
     }
 
     // Print a list of jobs
-    // Implement printJobs Here!!! Look at book example for EXECT format
+    // Implement printJobs Here!!! Look at book example for "PRECISE" format
 
-    // Refer back to lecture about ArrayList and HashMap useing that format.
+    // Refer back to lecture about ArrayList and HashMap using that format.
     private static void printJobs(ArrayList<HashMap<String, String>> someJobs) {
 
         if (someJobs.size() > 0) {
+            // Need to nest like line 11 String, String defines the value 'TYPES' for map's <key, value>
+            // 3.4.1.2 for-each declare the iterator variable "someJob
             for (HashMap<String, String> someJob : someJobs) {
+                // Needed this out to look like the example
                 System.out.println("*****");
+                // Reference to https://education.launchcode.org/java-web-development/chapters/control-flow-and-collections/hashmap.html line 38-41
                 for (Map.Entry<String, String> data : someJob.entrySet()) {
                     System.out.println(data.getKey() + ": " + data.getValue());
                 }
                 System.out.println("*****\n");
+                // needed the new line to look like the example but on the next line
             }
         }
      else System.out.println("No Results");
