@@ -106,7 +106,7 @@ public class JobData {
 
             for (Map.Entry<String,String> column : row.entrySet()){
                 if (column.getValue().toLowerCase().contains(searchAll)) {
-                    // part 2 for to add new row/ "job" and still have it search, use line 34-38 for this to add when not there
+                    // part 2 for to add new row/ "job" and still have it search, use line 34--36--38 for this to add when not there
                     if (!jobs.contains(row)) {
                         jobs.add(row);
                     }

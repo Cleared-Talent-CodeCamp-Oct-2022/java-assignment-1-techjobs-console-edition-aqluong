@@ -137,7 +137,7 @@ public class TechJobs {
                     System.out.println(data.getKey() + ": " + data.getValue());
                 }
                 System.out.println("*****");
-                // needed the new line to look like the example but on the next line
+                // needed the new line to look like the example but on the next line.
             }
         } else {
             System.out.println("No Results");
