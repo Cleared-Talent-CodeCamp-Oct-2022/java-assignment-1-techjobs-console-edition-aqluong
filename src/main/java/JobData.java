@@ -5,10 +5,7 @@ import org.apache.commons.csv.CSVRecord;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by LaunchCode
@@ -60,26 +57,29 @@ public class JobData {
     /**
      * Returns results of search the jobs data by key/value, using
      * inclusion of the search term.
-     *
+     * <p>
      * For example, searching for employer "Enterprise" will include results
      * with "Enterprise Holdings, Inc".
      *
-     * @param column   Column that should be searched.
-     * @param value Value of teh field to search for
+     * @param column Column that should be searched.
+     * @param value  Value of teh field to search for
      * @return List of all jobs matching the criteria
      */
     public static ArrayList<HashMap<String, String>> findByColumnAndValue(String column, String value) {
 
         // load data, if not already loaded
         loadData();
-
+// We create this empty jobs list so that we can fill it up with any jobs that match our search like a list of "results" of our search.
+        // Talks about this around 16:00 in the Assignment 1 Intro Part 2 video
         ArrayList<HashMap<String, String>> jobs = new ArrayList<>();
-
+// think of row as job
+        // to make things case insensitive any row/column/value add a .toLowerCase since that's what we're searching
         for (HashMap<String, String> row : allJobs) {
 
-            String aValue = row.get(column);
+            String aValue = row.get(column).toLowerCase();
+            String searchAll = value.toLowerCase();
 
-            if (aValue.contains(value)) {
+            if (aValue.contains(searchAll)) {
                 jobs.add(row);
             }
         }
@@ -91,15 +91,29 @@ public class JobData {
      * Search all columns for the given term
      *
      * @param value The search term to look for
-     * @return      List of all jobs with at least one field containing the value
+     * @return List of all jobs with at least one field containing the value
      */
     public static ArrayList<HashMap<String, String>> findByValue(String value) {
 
         // load data, if not already loaded
         loadData();
+        // TODO - implement this method video at 27:20
+        // https://www.youtube.com/watch?v=VRc3L1hkKDc&list=PLSNijfo6mLReVIWdj2iA5hc4AvryGtT8x&index=1 41:10
+        ArrayList<HashMap<String, String>> jobs = new ArrayList<>();
+        String searchAll = value.toLowerCase();
 
-        // TODO - implement this method
-        return null;
+        for (HashMap<String, String> row : allJobs) {
+
+            for (Map.Entry<String,String> column : row.entrySet()){
+                if (column.getValue().toLowerCase().contains(searchAll)) {
+                    // part 2 for to add new row/ "job" and still have it search, use line 34--36--38 for this to add when not there
+                    if (!jobs.contains(row)) {
+                        jobs.add(row);
+                    }
+                }
+            }
+        }
+        return jobs;
     }
 
     /**
